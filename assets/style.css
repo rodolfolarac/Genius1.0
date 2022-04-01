@@ -1,0 +1,182 @@
+:root {
+    --blue-btn: rgba(100, 149, 237, 0.5);
+    --green-btn: rgba(127, 255, 212, 0.5);
+    --yellow-btn: rgba(238, 232, 170, 0.5);
+    --red-btn: rgba(250, 128, 114, 0.5);
+}
+
+body {
+    font-size: 100%;
+    box-sizing: border-box;
+}
+
+#main {
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(to bottom right, #f3e7d7, #f8c7c9, rgb(224, 192, 199, 0.8));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    height: 28.125rem;
+    width: 28.125rem;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    margin: 0.625rem
+
+
+}
+
+.modal {
+    height: 28.125rem;
+    width: 28.125rem;
+    background-color: rgb(128, 128, 128);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 4rem;
+    font-size: 3rem;
+    border-radius: 100%;
+    color: rgb(0, 0, 0, 0.7);
+    
+}
+
+.modal label {
+    margin-top: 5rem;
+    color: rgb(0, 0, 0, 0.6);
+}
+
+.modal input {
+    height: 3rem;
+    width: 19rem;
+    margin-top: -2rem;
+    font-size: 1.375rem;
+    text-align: center;
+}
+
+.modal button {
+    font-size: 2rem;
+    width: 9rem;
+    height: 5rem;
+    border-radius: 40%;
+    border: none;
+    background-color: #90EE90;
+    cursor: pointer;
+    margin-top: 3rem;
+
+}
+
+.modal button:hover {
+    background-color: #00FF7F;
+}
+
+.button {
+    height: 50%;
+    width: 50%;
+
+
+}
+
+.Green {
+    background-color: var(--green-btn);
+    border-radius: 100% 0 0 0;
+}
+
+.Yellow {
+    background-color: var(--yellow-btn);
+    border-radius: 0 100% 0 0;
+}
+
+.Red {
+    background-color: var(--red-btn);
+    border-radius: 0 0 0 100%;
+}
+
+.Blue {
+    background-color: var(--blue-btn);
+    border-radius: 0 0 100% 0;
+
+}
+
+
+@keyframes animacaoGreen {
+    50% {
+        background-color: rgba(127, 255, 212);
+        transform: scale(1.05);
+        box-shadow: 0px 5px 50px 5px rgba(255, 255, 255, 0.8);
+    }
+}
+
+@keyframes animacaoYellow {
+    50%{
+        background-color:  rgba(238, 232, 170);
+        transform: scale(1.05);
+        box-shadow: 0px 5px 50px 5px rgba(255, 255, 255, 0.8);
+    }
+}
+
+@keyframes animacaoRed {
+    50%{
+        background-color: rgba(250, 128, 114);
+        transform: scale(1.05);
+        box-shadow: 0px 5px 50px 5px rgba(255, 255, 255, 0.8);
+
+    }
+}
+
+@keyframes animacaoBlue {
+    50%{
+        background-color:rgba(100, 149, 237);
+        transform: scale(1.05);
+        box-shadow: 0px 5px 50px 5px rgba(255, 255, 255, 0.8);
+    }
+}
+
+.animacaoGreen {
+    animation-name: animacaoGreen;
+    animation-duration: 1000ms;
+}
+
+.animacaoYellow {
+    animation-name: animacaoYellow;
+    animation-duration: 1s;
+}
+
+.animacaoRed {
+    animation-name: animacaoRed;
+    animation-duration: 1s;
+}
+
+
+.init {
+    position: absolute;
+    border-radius: 100%;
+    background-color: #808080;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    color: #fff;
+}
+
+.placar {
+    background-color: rgb(41, 40, 40, 0.9);
+    padding: 5px 10px;
+    border-radius: 0.25rem;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: visible;
+}
