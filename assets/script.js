@@ -28,7 +28,6 @@ function iniciarJogo() {
 
 
 
-
 //  function animarQuandoClicar(cor,botao){
 //      const btnClicado = container.querySelector(`.${cor}`)
 //      console.log(btnClicado)
