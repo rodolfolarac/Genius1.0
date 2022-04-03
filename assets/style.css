@@ -151,6 +151,10 @@ body {
     animation-duration: 1s;
 }
 
+.animacaoBlue {
+    animation-name: animacaoBlue;
+    animation-duration: 1s;
+}
 
 .init {
     position: absolute;

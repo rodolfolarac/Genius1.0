@@ -25,45 +25,6 @@ function iniciarJogo() {
     })
 }
 
-
-
-
-//  function animarQuandoClicar(cor,botao){
-//      const btnClicado = container.querySelector(`.${cor}`)
-//      console.log(btnClicado)
-//      btnClicado.classList.add(`animacao${cor}`)
-//      console.log(`animacao${cor}`)
-//      console.log(btnClicado)
-
-//  }
-
-/**Gerar numero */
-// function numeroAleatório(){
-//     const number = Math.round(Math.random()*3)
-//     return console.log(number);
-// }
-
-
-//testes
-
-
-
-// function adicionarEventoAosBotoes(){
-//     const botoes =  document.querySelectorAll('.button')
-//    botoes.forEach((el)=>{
-//        el.addEventListener('click',(event)=>{
-//         const button = event.target
-//         const colorButton = button.classList[1]
-//         arraydeCores.push(colorButton)
-//         animarQuandoClicar(colorButton,button)
-
-//        })
-//    })
-// }
-// adicionarEventoAosBotoes();
-
-
-
 // Criação do tabuleiro
 
 function criarTabuleiro() {
@@ -140,5 +101,51 @@ function criarTabuleiro() {
 
 }
 
+
+
+
+
+/**Gerar numero */
+function numeroAleatório(){
+    const number = Math.round(Math.random()*3)
+    return console.log(number);
+}
+
+
+/**Adicionar evento de acender o botão */
+
+function adicionarEventoAosBotoes(){
+    const botoes =  document.querySelectorAll('.button')
+   botoes.forEach((el)=>{
+       el.addEventListener('click',(event)=>{
+        const button = event.target
+        console.log(button)
+        const colorButton = button.classList[1]
+        arraydeCores.push(colorButton)
+        animarQuandoClicar(colorButton,button)
+
+       })
+   })
+}
+
+
+/**Adicionar e remover a animação do botão */
+
+function animarQuandoClicar(cor,botao){
+    const btnClicado = document.querySelector(`.${cor}`)
+    
+    btnClicado.classList.add(`animacao${cor}`)
+    setTimeout(()=>{
+        btnClicado.classList.remove(`animacao${cor}`)
+    },500)
+    
+
+}
+
+
+
+
+
 criarTabuleiro();
 iniciarJogo();
+adicionarEventoAosBotoes();
