@@ -157,6 +157,8 @@ body {
 }
 
 .init {
+    height: 50%;
+    width: 50%;
     position: absolute;
     border-radius: 100%;
     background-color: #808080;
