@@ -1,7 +1,7 @@
 /**VARIAVEIS PADRAO */
 const container = document.querySelector('.container')
-let cont = 1;
-const arrayAutomatico =[];
+let cont = 0;
+const arrayAutomatico = [];
 const arraydeCores = [];
 
 
@@ -31,6 +31,7 @@ function criarTabuleiro() {
     //span
 
     const welcomeSpan = document.createElement('span')
+    welcomeSpan.classList.add('span__info')
     welcomeSpan.innerText = 'Bem vindo!'
 
     const welcomeName = document.createElement('span')
@@ -86,7 +87,7 @@ function iniciarJogo() {
         event.preventDefault();
 
         const namePlayer = document.querySelector('.namePlayer').value
-        
+
 
         if (namePlayer === '') {
             alert('Insira o seu nome antes de jogar!')
@@ -97,11 +98,11 @@ function iniciarJogo() {
             criarSequencia();
         }
 
-    }) 
+    })
 }
 /**Gerar numero */
-function numeroAleatório(){
-    const number = Math.round(Math.random()*3)
+function numeroAleatório() {
+    const number = Math.round(Math.random() * 3)
     return number;
 }
 
@@ -109,53 +110,58 @@ function numeroAleatório(){
 
 
 /**Cria sequencia para o jogo */
-function criarSequencia(){
-    
-        let val = numeroAleatório();
-        console.log(val)
-        if(val == 0){
-            console.log('oi0')
-            animarQuandoClicar('Green')
-            arrayAutomatico.push('Green')
-            
-            
-        }else if(val == 1){
-            console.log('oi1')
-            animarQuandoClicar('Red')
-            arrayAutomatico.push('Red')
-            
-            
-        }else if(val == 2){
-            console.log('oi2')
-            animarQuandoClicar('Yellow')
-            arrayAutomatico.push('Yellow')
-            
-        }else {
-            console.log('oi3')
-            animarQuandoClicar('Blue')
-            arrayAutomatico.push('Blue')
-            
-        }
-        
-        
-    
+function criarSequencia() {
 
-    setInterval(()=>{
-        verificaClique(arrayAutomatico,arraydeCores)
-    },(3000))
+    let val = numeroAleatório();
+    console.log(val)
+
+
+    
+        if (val == 0) {
+            arrayAutomatico.push('Green')
+            animarQuandoClicar('Green')
+            
+
+
+        } else if (val == 1) {
+            arrayAutomatico.push('Red')
+            animarQuandoClicar('Red')
+            
+
+
+        } else if (val == 2) {
+            arrayAutomatico.push('Yellow')
+            animarQuandoClicar('Yellow')
+            
+
+        } else {
+            arrayAutomatico.push('Blue')
+            animarQuandoClicar('Blue')
+            
+
+        }
+
+
+
 }
 
 /**Adicionar e remover a animação do botão */
 
-function animarQuandoClicar(cor){
+function animarQuandoClicar(cor) {
     const btnClicado = document.querySelector(`.${cor}`)
-    console.log(btnClicado)
+
+        btnClicado.classList.add(`animacao${cor}`)
     
-    btnClicado.classList.add(`animacao${cor}`)
-    setTimeout(()=>{
+    
+    setTimeout(() => {
         btnClicado.classList.remove(`animacao${cor}`)
-    },500)
+    }, 500)
+
+    setTimeout(()=>{
+        verificaClique(arrayAutomatico, arraydeCores)
+    }, 2000)
     
+
 
 }
 
@@ -164,47 +170,68 @@ function animarQuandoClicar(cor){
 /**VERICAR O CLIQUE */
 
 
-function verificaClique(arrayAutomatico, arrayCores){
+function verificaClique(arrayAutomatico, arrayCores) {
     const spanPlacar = document.querySelector('.placar')
-    if(arrayAutomatico == ''){
-        criarSequencia();
-    }else {
-        const result = arrayAutomatico.every((el, i)=>{
-            el === arrayCores[i]
-        })
-        if(result == true){
-            cont++;
+    const spanInfo = document.querySelector('.span__info')
+
+
+    const result = arrayAutomatico.every((el, i) => {
+        if (el === arrayCores[i]) {
+            return true;
+        }
+    })
+
+
+        if (result == true) {
+
             console.log('acertei')
-            
+            console.log(arrayAutomatico)
+            console.log(arrayCores)
+            cont++;
             spanPlacar.innerText = cont;
-            criarSequencia();
-            //Função que atualiza o placar com a variavel cont
-    
-        }else if( result == false){
+            
+
+            setTimeout(()=>{
+                criarSequencia();
+            },1000)
+           
+                
+
+        } else {
+
             cont = 0;
             spanPlacar.innerText = '0'
+            arrayCores = []
+            arrayAutomatico = [];
+            spanInfo.innerText = 'Que pena, você perdeu'
+            setTimeout(() => {
+                criarTabuleiro();
+            }, 2000);
+            
+
 
         }
-    }
-    
+
+   
+
+
 }
 
 
 /**Adicionar evento de acender o botão */
 
-function adicionarEventoAosBotoes(){
-    const botoes =  document.querySelectorAll('.button')
-   botoes.forEach((el)=>{
-       el.addEventListener('click',(event)=>{
-        const button = event.target
-        console.log(button)
-        const colorButton = button.classList[1]
-        arraydeCores.push(colorButton)
-        console.log(colorButton)
-        animarQuandoClicar(colorButton,button)
+function adicionarEventoAosBotoes() {
+    const botoes = document.querySelectorAll('.button')
+    botoes.forEach((el) => {
+        el.addEventListener('click', (event) => {
+            const button = event.target
+            const colorButton = button.classList[1]
+            arraydeCores.push(colorButton)
+            console.log(colorButton)
+            animarQuandoClicar(colorButton, button)
 
-       })
-   })
+        })
+    })
 }
 
 
