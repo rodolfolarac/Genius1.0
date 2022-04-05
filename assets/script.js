@@ -1,8 +1,7 @@
 /**VARIAVEIS PADRAO */
-const container = document.querySelector('.container')
 let cont = 0;
-const arrayAutomatico = [];
-const arraydeCores = [];
+let arrayAutomatico = [];
+let arraydeCores = [];
 
 
 // Criação do tabuleiro
@@ -78,6 +77,23 @@ function criarTabuleiro() {
 
 }
 
+
+/**Adicionar evento de acender o botão */
+
+function adicionarEventoAosBotoes() {
+    const botoes = document.querySelectorAll('.button')
+    botoes.forEach((el) => {
+        el.addEventListener('click', (event) => {
+            const button = event.target
+            const colorButton = button.classList[1]
+            arraydeCores.push(colorButton)
+            animarQuandoClicar(colorButton)
+
+        })
+    })
+}
+
+
 /** Iniciar jogo - Insere o nome e desativa o modal */
 
 function iniciarJogo() {
@@ -85,6 +101,7 @@ function iniciarJogo() {
     const btnStart = document.querySelector('#inputName')
     btnStart.addEventListener('click', (event) => {
         event.preventDefault();
+        adicionarEventoAosBotoes()
 
         const namePlayer = document.querySelector('.namePlayer').value
 
@@ -109,61 +126,106 @@ function numeroAleatório() {
 
 
 
-/**Cria sequencia para o jogo */
+/**Função que anima em sequencia  */
+
+
+
 function criarSequencia() {
 
     let val = numeroAleatório();
     console.log(val)
 
 
+    if (val == 0) {
+        arrayAutomatico.push('Green')
+        animarArray(arrayAutomatico)
+
+
+
+    } else if (val == 1) {
+        arrayAutomatico.push('Red')
+        animarArray(arrayAutomatico)
+
+
+
+    } else if (val == 2) {
+        arrayAutomatico.push('Yellow')
+        animarArray( arrayAutomatico)
+
+
+    } else {
+        arrayAutomatico.push('Blue')
+        animarArray(arrayAutomatico)
+        
+
+
+    }
+
+
+
+}
+
+
+function animarArray( arrayAutomatico){
+    console.log(arrayAutomatico)
+    // Verde, vermelho 
+    arrayAutomatico.forEach((el,i)=>{
+        const btnClicado = document.querySelector(`.${el}`)
+        setTimeout(()=>{
+               
+            btnClicado.classList.add(`animacao${el}`)
+            
+        },i*1000)
+            
+        
+                
+            
+            
+        //mudar aqui
+
+
+        setTimeout(() => {
+            btnClicado.classList.remove(`animacao${el}`)
+        },i*500)
+
+
+
+    })
+    console.log('Array clicado:::'+arraydeCores)
+    console.log('Array Auto:::'+arrayAutomatico)
     
-        if (val == 0) {
-            arrayAutomatico.push('Green')
-            animarQuandoClicar('Green')
-            
 
-
-        } else if (val == 1) {
-            arrayAutomatico.push('Red')
-            animarQuandoClicar('Red')
-            
-
-
-        } else if (val == 2) {
-            arrayAutomatico.push('Yellow')
-            animarQuandoClicar('Yellow')
-            
-
-        } else {
-            arrayAutomatico.push('Blue')
-            animarQuandoClicar('Blue')
-            
-
-        }
-
-
-
+     verificaClique(arrayAutomatico, arraydeCores)
+    
+        
+        
+    
+        
+    
 }
 
 /**Adicionar e remover a animação do botão */
 
-function animarQuandoClicar(cor) {
+function animarQuandoClicar(cor, arrayAutomatico) {
+    
+
     const btnClicado = document.querySelector(`.${cor}`)
 
-        btnClicado.classList.add(`animacao${cor}`)
     
-    
-    setTimeout(() => {
-        btnClicado.classList.remove(`animacao${cor}`)
-    }, 500)
+        
+            btnClicado.classList.add(`animacao${cor}`)
+            
+       
 
-    setTimeout(()=>{
-        verificaClique(arrayAutomatico, arraydeCores)
-    }, 2000)
-    
-
+        setTimeout(()=>{
+            btnClicado.classList.remove(`animacao${cor}`)
+        },500)
 
 }
+
+
+
+
 
 
 
@@ -175,64 +237,41 @@ function verificaClique(arrayAutomatico, arrayCores) {
     const spanInfo = document.querySelector('.span__info')
 
 
-    const result = arrayAutomatico.every((el, i) => {
-        if (el === arrayCores[i]) {
-            return true;
-        }
-    })
+    const result = arrayAutomatico.every((el, i) => el === arrayCores[i])
 
 
-        if (result == true) {
-
-            console.log('acertei')
-            console.log(arrayAutomatico)
-            console.log(arrayCores)
-            cont++;
-            spanPlacar.innerText = cont;
-            
-
-            setTimeout(()=>{
-                criarSequencia();
-            },1000)
-           
-                
-
-        } else {
-
-            cont = 0;
-            spanPlacar.innerText = '0'
-            arrayCores = []
-            arrayAutomatico = [];
-            spanInfo.innerText = 'Que pena, você perdeu'
-            setTimeout(() => {
-                criarTabuleiro();
-            }, 2000);
-            
+    if (result == true) {
+        cont++;
+        spanPlacar.innerText = cont;
+        arrayCores = [];
 
 
-        }
 
-   
+       
+            criarSequencia();
+        
+
+
+
+    } else {
+
+        cont = 0;
+        spanPlacar.innerText = '0'
+        arrayCores = [];
+        arrayAutomatico = [];
+        spanInfo.innerText = 'Que pena, você perdeu'
+        setTimeout(()=>{
+            main.innerHTML = ''
+            criarTabuleiro();
+        },3000)
+    }
+
+
 
 
 }
 
 
-/**Adicionar evento de acender o botão */
-
-function adicionarEventoAosBotoes() {
-    const botoes = document.querySelectorAll('.button')
-    botoes.forEach((el) => {
-        el.addEventListener('click', (event) => {
-            const button = event.target
-            const colorButton = button.classList[1]
-            arraydeCores.push(colorButton)
-            console.log(colorButton)
-            animarQuandoClicar(colorButton, button)
-
-        })
-    })
-}
 
 
 
@@ -242,5 +281,5 @@ function adicionarEventoAosBotoes() {
 
 
 criarTabuleiro();
-adicionarEventoAosBotoes();
+
 

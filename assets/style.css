@@ -138,22 +138,22 @@ body {
 
 .animacaoGreen {
     animation-name: animacaoGreen;
-    animation-duration: 1000ms;
+    animation-duration: 500ms;
 }
 
 .animacaoYellow {
     animation-name: animacaoYellow;
-    animation-duration: 1s;
+    animation-duration: 500ms;
 }
 
 .animacaoRed {
     animation-name: animacaoRed;
-    animation-duration: 1s;
+    animation-duration: 500ms;
 }
 
 .animacaoBlue {
     animation-name: animacaoBlue;
-    animation-duration: 1s;
+    animation-duration: 500ms;
 }
 
 .init {
