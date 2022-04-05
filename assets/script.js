@@ -168,31 +168,42 @@ function criarSequencia() {
 
 function animarArray( arrayAutomatico){
     console.log(arrayAutomatico)
-    // Verde, vermelho 
-    arrayAutomatico.forEach((el,i)=>{
-        const btnClicado = document.querySelector(`.${el}`)
-        setTimeout(()=>{
-               
-            btnClicado.classList.add(`animacao${el}`)
-            
-        },i*1000)
-            
-        
+    
+    const intervalo = setInterval(()=>{
+
+        if(arrayAutomatico.length>0){
+            arrayAutomatico.forEach((el,i)=>{
+                const btnClicado = document.querySelector(`.${el}`)
+                setTimeout(()=>{
+                       
+                    btnClicado.classList.add(`animacao${el}`)
+                    
+                },i*1000)
+                    
                 
-            
-            
-        //mudar aqui
+                        
+                    
+                    
+                //mudar aqui
+        
+        
+                setTimeout(() => {
+                    btnClicado.classList.remove(`animacao${el}`)
+                },i*500)
+        
+        
+        
+            })
+        } else {
+            clearInterval //teste
+        }
 
-
-        setTimeout(() => {
-            btnClicado.classList.remove(`animacao${el}`)
-        },i*500)
-
-
-
-    })
+        
+    },)
+    
     console.log('Array clicado:::'+arraydeCores)
     console.log('Array Auto:::'+arrayAutomatico)
+
     
 
      verificaClique(arrayAutomatico, arraydeCores)
