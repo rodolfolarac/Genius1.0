@@ -103,7 +103,7 @@ body {
 }
 
 
-@keyframes animacaoGreen {
+@keyframes animacaogreen {
     50% {
         background-color: rgba(127, 255, 212);
         transform: scale(1.05);
@@ -111,7 +111,7 @@ body {
     }
 }
 
-@keyframes animacaoYellow {
+@keyframes animacaoyellow {
     50%{
         background-color:  rgba(238, 232, 170);
         transform: scale(1.05);
@@ -119,7 +119,7 @@ body {
     }
 }
 
-@keyframes animacaoRed {
+@keyframes animacaored {
     50%{
         background-color: rgba(250, 128, 114);
         transform: scale(1.05);
@@ -128,7 +128,7 @@ body {
     }
 }
 
-@keyframes animacaoBlue {
+@keyframes animacaoblue {
     50%{
         background-color:rgba(100, 149, 237);
         transform: scale(1.05);
@@ -136,24 +136,24 @@ body {
     }
 }
 
-.animacaoGreen {
-    animation-name: animacaoGreen;
-    animation-duration: 500ms;
+.animacaogreen {
+    animation-name: animacaogreen;
+    animation-duration: 1000ms;
 }
 
-.animacaoYellow {
-    animation-name: animacaoYellow;
-    animation-duration: 500ms;
+.animacaoyellow {
+    animation-name: animacaoyellow;
+    animation-duration: 1000ms;
 }
 
-.animacaoRed {
-    animation-name: animacaoRed;
-    animation-duration: 500ms;
+.animacaored {
+    animation-name: animacaored;
+    animation-duration: 1000ms;
 }
 
-.animacaoBlue {
-    animation-name: animacaoBlue;
-    animation-duration: 500ms;
+.animacaoblue {
+    animation-name: animacaoblue;
+    animation-duration: 1000ms;
 }
 
 .init {
