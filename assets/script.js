@@ -193,7 +193,7 @@ function adicionarEventosAosBotoes(){
                 
                 setTimeout(()=>{
                     criarTabuleiro();
-                },2000)
+                },1000)
 
             } else if( jogadasPessoa.length === jogadasMaquina.length){
                 jogadasPessoa =[];
