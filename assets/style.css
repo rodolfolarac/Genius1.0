@@ -81,22 +81,22 @@ body {
 
 }
 
-.Green {
+.botao--green {
     background-color: var(--green-btn);
     border-radius: 100% 0 0 0;
 }
 
-.Yellow {
+.botao--yellow {
     background-color: var(--yellow-btn);
     border-radius: 0 100% 0 0;
 }
 
-.Red {
+.botao--red {
     background-color: var(--red-btn);
     border-radius: 0 0 0 100%;
 }
 
-.Blue {
+.botao--blue {
     background-color: var(--blue-btn);
     border-radius: 0 0 100% 0;
 
