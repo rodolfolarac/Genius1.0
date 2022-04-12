@@ -1,10 +1,10 @@
 
-
+const main = document.querySelector('#main')
 
 // Criação do tabuleiro
 
 function criarTabuleiro() {
-    const main = document.querySelector('#main')
+    
 
     const container = document.createElement('div')
     container.classList.add('container')
@@ -178,7 +178,7 @@ function adicionarEventosAosBotoes(){
         el.addEventListener('click',(e)=>{
             const botaoClicado = e.target;
             const corBotaoClicado = e.target.classList[1].split('-')[2];
-            console.log(botaoClicado)
+            
             jogadasPessoa.push(botaoClicado)
             
             
@@ -190,15 +190,19 @@ function adicionarEventosAosBotoes(){
                 cont = 0;
                 jogadasMaquina = [];
                 jogadasPessoa = [];
-                
                 setTimeout(()=>{
-                    criarTabuleiro();
-                },1000)
+                    btnRecomecar()
+                },500)
+                
+                
+                    
+            
 
             } else if( jogadasPessoa.length === jogadasMaquina.length){
                 jogadasPessoa =[];
                 gerarAnimacaoNoBotao()
-                console.log('Acertou!')
+                alert('Acertou!')
+                alert('A proxima rodada ira começar!')
                 cont++;
                 let spanPlacar =  document.querySelector('.placar')
                 spanPlacar.innerText = cont;
@@ -231,7 +235,28 @@ function verificaPerda(){
     return false;
 }
 
+function btnRecomecar(){
+    
+    const container = document.createElement('div')
+    
+    container.classList.add('containerRestart')
 
+    const btnRestart = document.createElement('button')
+    btnRestart.classList.add('btn__restart')
+    btnRestart.innerText='Recomeçar';
+
+   
+    container.appendChild(btnRestart)
+    
+    main.append(container)
+    const btn__restart = document.querySelector('.btn__restart')
+    btn__restart.addEventListener('click',()=>{
+        main.innerHTML='';
+        criarTabuleiro();
+    })
+    
+
+}
 
 
 

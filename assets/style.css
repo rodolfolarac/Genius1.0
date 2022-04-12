@@ -186,3 +186,19 @@ body {
 .show {
     display: visible;
 }
+
+.btn__restart {
+    display: inline-block;
+    border-radius: 80px;
+    width: 200px;
+    height: 50px;
+    border:none;
+    background-color: #d4686c;
+    color: #fff;
+    cursor: pointer;
+    
+}
+
+.btn__restart:hover{
+    background-color: #c93c41;
+}
